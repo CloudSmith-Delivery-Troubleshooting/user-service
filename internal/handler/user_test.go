@@ -129,7 +129,7 @@ func TestUpdateUserHandler(t *testing.T) {
 		t.Errorf("expected status 200 OK, got %d", w.Code)
 	}
 
-	got, _ := svc.GetUser(nil, user.Email)
+	got, _ := svc.GetUser(context.TODO(), user.Email)
 	if got.Name != "Updated" || got.Age != 30 {
 		t.Errorf("user not updated correctly, got %+v", got)
 	}
@@ -152,7 +152,7 @@ func TestDeleteUserHandler(t *testing.T) {
 		t.Errorf("expected status 204 No Content, got %d", w.Code)
 	}
 
-	if _, err := svc.GetUser(nil, user.Email); err == nil {
+	if _, err := svc.GetUser(context.TODO(), user.Email); err == nil {
 		t.Errorf("user was not deleted")
 	}
 }
