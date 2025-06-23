@@ -3,9 +3,9 @@ name: Go CI
 on:
   workflow_dispatch:
   push:
-    branches: [ci-build]
+    branches: [ci-build, ci-test]
   pull_request:
-    branches: [ci-build]
+    branches: [ci-build, ci-test]
 
 jobs:
   build-test:
