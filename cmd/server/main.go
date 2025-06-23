@@ -9,7 +9,6 @@ import (
 	"syscall"
 	"time"
 	"user-service/internal/handler"
-	"user-service/internal/model"
 	"user-service/internal/repository"
 	"user-service/internal/service"
 	"user-service/pkg/logger"

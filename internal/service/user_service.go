@@ -2,8 +2,14 @@ package service
 
 import (
 	"context"
+	"errors"
 	"user-service/internal/model"
 	"user-service/internal/repository"
+)
+
+// Error definitions
+var (
+	ErrUserNotFound = errors.New("user not found")
 )
 
 type UserService interface {
@@ -27,7 +33,11 @@ func (s *userService) CreateUser(ctx context.Context, user *model.User) error {
 }
 
 func (s *userService) GetUser(ctx context.Context, email string) (*model.User, error) {
-	return s.repo.GetByEmail(ctx, email)
+	user, err := s.repo.GetByEmail(ctx, email)
+	if err != nil {
+		return nil, ErrUserNotFound
+	}
+	return user, nil
 }
 
 func (s *userService) UpdateUser(ctx context.Context, user *model.User) error {

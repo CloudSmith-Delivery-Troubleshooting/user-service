@@ -12,7 +12,6 @@ import (
 	"user-service/internal/service"
 
 	"github.com/gorilla/mux"
-	"go.uber.org/zap"
 	"go.uber.org/zap/zaptest"
 )
 
