@@ -42,11 +42,7 @@ func (h *UserHandler) GetUser(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "User not found", http.StatusNotFound)
 		return
 	}
-	if err := json.NewEncoder(w).Encode(user); err != nil {
-		h.logger.Error("Failed to encode response", zap.Error(err))
-		http.Error(w, "Failed to encode response", http.StatusInternalServerError)
-		return
-	}
+	json.NewEncoder(w).Encode(user)
 }
 
 func (h *UserHandler) UpdateUser(w http.ResponseWriter, r *http.Request) {

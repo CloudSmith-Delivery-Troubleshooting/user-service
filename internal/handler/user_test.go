@@ -129,7 +129,7 @@ func TestUpdateUserHandler(t *testing.T) {
 		t.Errorf("expected status 200 OK, got %d", w.Code)
 	}
 
-	got, _ := svc.GetUser(context.TODO(), user.Email)
+	got, _ := svc.GetUser(nil, user.Email)
 	if got.Name != "Updated" || got.Age != 30 {
 		t.Errorf("user not updated correctly, got %+v", got)
 	}

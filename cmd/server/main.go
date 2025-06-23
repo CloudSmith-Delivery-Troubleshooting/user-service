@@ -24,11 +24,7 @@ func main() {
 	if err != nil {
 		log.Fatalf("cannot initialize logger: %v", err)
 	}
-	defer func() {
-		if err := zapLogger.Sync(); err != nil {
-			log.Printf("failed to sync logger: %v", err)
-		}
-	}()
+	defer zapLogger.Sync()
 
 	// Setup in-memory DB schema
 	schema := &memdb.DBSchema{
