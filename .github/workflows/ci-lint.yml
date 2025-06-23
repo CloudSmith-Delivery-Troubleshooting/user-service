@@ -3,9 +3,9 @@ name: Lint
 on:
   workflow_dispatch:
   push:
-    branches: [ci-lint]
+    branches: [ci-linter]
   pull_request:
-    branches: [ci-lint]
+    branches: [ci-linter]
 
 permissions:
   checks: write
