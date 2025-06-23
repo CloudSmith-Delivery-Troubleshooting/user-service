@@ -37,7 +37,6 @@ func (s *userService) GetUser(ctx context.Context, email string) (*model.User, e
 	if err != nil {
 		return nil, ErrUserNotFound
 	}
-	return user, nil
 }
 
 func (s *userService) UpdateUser(ctx context.Context, user *model.User) error {
