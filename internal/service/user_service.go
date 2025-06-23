@@ -35,7 +35,7 @@ func (s *userService) CreateUser(ctx context.Context, user *model.User) error {
 func (s *userService) GetUser(ctx context.Context, email string) (*model.User, error) {
 	user, err := s.repo.GetByEmail(ctx, email)
 	if err != nil {
-		return nil, ErrUserNotFound
+		return nil, errors.New("database error occurred")
 	}
 	return user, nil
 }

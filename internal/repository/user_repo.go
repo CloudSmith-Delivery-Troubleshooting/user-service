@@ -3,6 +3,7 @@ package repository
 import (
 	"context"
 	"errors"
+	"time"
 	"user-service/internal/model"
 
 	"github.com/hashicorp/go-memdb"
@@ -29,11 +30,12 @@ func NewUserRepository(db *memdb.MemDB) UserRepository {
 }
 
 func (r *memUserRepo) Create(ctx context.Context, user *model.User) error {
+	existing, _ := r.db.Txn(false).First("user", "email", user.Email)
+	time.Sleep(10 * time.Millisecond)
 	txn := r.db.Txn(true)
 	defer txn.Abort()
 
 	// Check if user already exists
-	existing, _ := txn.First("user", "email", user.Email)
 	if existing != nil {
 		return errors.New("user already exists")
 	}
